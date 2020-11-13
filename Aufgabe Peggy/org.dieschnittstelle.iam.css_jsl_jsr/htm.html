@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1"/>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Peggys Bearbeitung der Aufgaben für Internetanwendungen bei Prof. Kreutel</title>
+    <!-- add style -->
+    <link rel="stylesheet" href="css/peggy.css"/>
+    <!-- add interaction control -->
+    <!-- <script type="application/javascript" src="js/jsl.js"></script> -->
+    <!-- <script type="application/javascript" src="js/jsr.js"></script> -->
+    <!-- add the "library" script wrapping XMLHttpRequest -->
+    <script type="application/javascript" src="js/lib/xhr.js"></script>
+    <script src=".js/peggy_bis_JSL2.js" type="module"></script>
+    <script src="./js/Peggy_ab_JSR.js" type="module"></script>
+</head>
+<body>
+<!--Headerbereich--->
+<header>
+    <button class="imgbutton menu align-left">menu</button>
+    <h1 class="align-left">Medien</h1>
+    <!--dies ist der Objekte hinzufügen Button Klasse add-->
+    <button class="imgbutton add align-right" id="plusObjekt">add</button>
+    <!--hier ist der Listen/Kachel Button--->
+    <button class="imgbutton thumbnails align-right " id="toggleview">thumbnails</button>
+</header>
+<!---Hauptbereich--->
+<main class>
+    <!----Testfade
+    <div class="test" class="align-left">
+        <img id="fadepic" src="./bilder/300_100.jpeg" class="blubb">
+        <button id="fadebutton"><b>Fade</b></button>
+    </div>
+   --------->
+    <!--------->
+    <ul>
+        <!--------->
+        <div class="puffer"></div>
+        <li #1>
+            <div class="inhalt">
+                <div class="bild" class="align-left" >
+                    <img  src="./bilder/300_100.jpeg">
+                </div>
+                <div class="zeilenbox" class="align-left">
+
+                    <div class="zeile1">
+                        <div class="align-left website">lorempixel.com</div>
+                        <div class="align-right datum">10.02.2020</div>
+                    </div>
+
+                    <div class="zeile2" >
+                        <div class="align-left titel"> <b>M1- das ist meins</b></div>
+                    </div>
+
+                    <div class="zeile3">
+                        <div class="play">
+                            <button class="imgbutton play align-left">play
+                                <div class="nummer">0</div>
+                            </button>
+                        </div>
+                        <div class="punkte" id="p1">
+                            <button class="imgbutton align-right">punkte
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </li>
+
+        <!------>
+        <li #2>
+            <div class="inhalt">
+                <div class="bild" class="align-left" >
+                    <img  src="./bilder/100_100.jpeg">
+                </div>
+                <div class="zeilenbox" class="align-left">
+
+                    <div class="zeile1">
+                        <div class="align-left website">ipsumpixel.com</div>
+                        <div class="align-right datum">10.02.2020</div>
+                    </div>
+
+                    <div class="zeile2" >
+                        <div class="align-left titel"> <b>M2- mit viel Geschrei</b></div>
+                    </div>
+
+                    <div class="zeile3">
+                        <div class="play">
+                            <button class="imgbutton play align-left">play
+                                <div class="nummer">0</div>
+                            </button>
+                        </div>
+                        <div class="punkte" id="p2">
+                            <button class="imgbutton align-right">punkte
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </li>
+        <li #3>
+            <div class="inhalt">
+                <div class="bild" class="align-left" >
+                    <img  src="./bilder/100_200.jpeg">
+                </div>
+                <div class="zeilenbox" class="align-left">
+
+                    <div class="zeile1">
+                        <div class="align-left website">dolorpixel.com</div>
+                        <div class="align-right datum">10.02.2020</div>
+                    </div>
+
+                    <div class="zeile2" >
+                        <div class="align-left titel"> <b>M3- verflucht es sei</b></div>
+                    </div>
+
+                    <div class="zeile3">
+                        <div class="play">
+                            <button class="imgbutton play align-left">play
+                                <div class="nummer">0</div>
+                            </button>
+                        </div>
+                        <div class="punkte" id="p3">
+                            <button class="imgbutton align-right">punkte
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </li>
+        <li #4>
+            <div class="inhalt">
+                <div class="bild" class="align-left" >
+                    <img  src="./bilder/300_100.jpeg">
+                </div>
+                <div class="zeilenbox" class="align-left">
+
+                    <div class="zeile1">
+                        <div class="align-left website">schnickschnackpixel.com</div>
+                        <div class="align-right datum">10.02.2020</div>
+                    </div>
+
+                    <div class="zeile2" >
+                        <div class="align-left titel"> <b>M4- fast wie Klavier</b></div>
+                    </div>
+
+                    <div class="zeile3">
+                        <div class="play">
+                            <button class="imgbutton play align-left">play
+                                <div class="nummer">0</div>
+                            </button>
+                        </div>
+                        <div class="punkte" id="p4">
+                            <button class="imgbutton align-right">punkte
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </li>
+        <li #5>
+            <div class="inhalt">
+                <div class="bild" class="align-left" >
+                    <img  src="./bilder/100_100.jpeg">
+                </div>
+                <div class="zeilenbox" class="align-left">
+
+                    <div class="zeile1">
+                        <div class="align-left website">mondpixel.com</div>
+                        <div class="align-right datum">10.02.2020</div>
+                    </div>
+
+                    <div class="zeile2" >
+                        <div class="align-left titel"> <b>M5- nicht Nase geruempft</b></div>
+                    </div>
+
+                    <div class="zeile3">
+                        <div class="play">
+                            <button class="imgbutton play align-left">play
+                                <div class="nummer">0</div>
+                            </button>
+                        </div>
+                        <div class="punkte" id="p5">
+                            <button class="imgbutton align-right">punkte
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </li>
+        <li #6>
+            <div class="inhalt">
+                <div class="bild" class="align-left" >
+                    <img  src="./bilder/100_200.jpeg">
+                </div>
+                <div class="zeilenbox" class="align-left">
+
+                    <div class="zeile1">
+                        <div class="align-left website">spaghettipixel.com</div>
+                        <div class="align-right datum">10.02.2020</div>
+                    </div>
+
+                    <div class="zeile2" >
+                        <div class="align-left titel"> <b>M6- sprach die Hex</b></div>
+                    </div>
+
+                    <div class="zeile3">
+                        <div class="play">
+                            <button class="imgbutton play align-left">play
+                                <div class="nummer">0</div>
+                            </button>
+                        </div>
+                        <div class="punkte" id="p6">
+                            <button class="imgbutton align-right">punkte
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </li>
+        <li #7>
+            <div class="inhalt">
+                <div class="bild" class="align-left" >
+                    <img  src="./bilder/300_100.jpeg">
+                </div>
+                <div class="zeilenbox" class="align-left">
+
+                    <div class="zeile1">
+                        <div class="align-left website">buntepixel.com</div>
+                        <div class="align-right datum">10.02.2020</div>
+                    </div>
+
+                    <div class="zeile2" >
+                        <div class="align-left titel"> <b>M7- so steht's geschrieben</b></div>
+                    </div>
+
+                    <div class="zeile3">
+                        <div class="play">
+                            <button class="imgbutton play align-left">play
+                                <div class="nummer">0</div>
+                            </button>
+                        </div>
+                        <div class="punkte" id="p7">
+                            <button class="imgbutton align-right">punkte
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </li>
+        <li #8>
+            <div class="inhalt">
+                <div class="bild" class="align-left" >
+                    <img  src="./bilder/100_100.jpeg">
+                </div>
+                <div class="zeilenbox" class="align-left">
+
+                    <div class="zeile1">
+                        <div class="align-left website">heldenpixel.com</div>
+                        <div class="align-right datum">10.02.2020</div>
+                    </div>
+
+                    <div class="zeile2" >
+                        <div class="align-left titel"> <b>M8- gute Nacht</b></div>
+                    </div>
+
+                    <div class="zeile3">
+                        <div class="play">
+                            <button class="imgbutton play align-left">play
+                                <div class="nummer">0</div>
+                            </button>
+                        </div>
+                        <div class="punkte" id="p8">
+                            <button class="imgbutton align-right">punkte
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </li>
+        <li #9>
+            <div class="inhalt">
+                <div class="bild" class="align-left" >
+                    <img  src="./bilder/100_200.jpeg">
+                </div>
+                <div class="zeilenbox" class="align-left">
+
+                    <div class="zeile1">
+                        <div class="align-left website">katzenpixel.com</div>
+                        <div class="align-right datum">10.02.2020</div>
+                    </div>
+
+                    <div class="zeile2" >
+                        <div class="align-left titel"> <b>M9- sand verstreun</b></div>
+                    </div>
+
+                    <div class="zeile3">
+                        <div class="play">
+                            <button class="imgbutton play align-left">play
+                                <div class="nummer">0</div>
+                            </button>
+                        </div>
+                        <div class="punkte" id="p9">
+                            <button class="imgbutton align-right">punkte
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </li>
+        <li #10>
+            <div class="inhalt">
+                <div class="bild" class="align-left" >
+                    <img  src="./bilder/300_100.jpeg">
+                </div>
+                <div class="zeilenbox" class="align-left">
+
+                    <div class="zeile1">
+                        <div class="align-left website">schlafpixel.com</div>
+                        <div class="align-right datum">10.02.2020</div>
+                    </div>
+
+                    <div class="zeile2" >
+                        <div class="align-left titel"> <b>M10- schlafen gehn</b></div>
+                    </div>
+
+                    <div class="zeile3">
+                        <div class="play">
+                            <button class="imgbutton play align-left">play
+                                <div class="nummer">0</div>
+                            </button>
+                        </div>
+                        <div class="punkte" id="#p10">
+                            <button class="imgbutton align-right">punkte
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </li>
+    </ul>
+    <!--------->
+</main>
+<!--------->
+<footer>
+    <button class="imgbutton logout align-left">logout</button>
+    <button class="imgbutton refresh align-right">refresh</button>
+</footer>
+<!--------->
+</body>
+</html>
