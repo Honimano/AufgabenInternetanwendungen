@@ -107,7 +107,89 @@ class Viewcontroller {
         return liElement.getElementsByClassName("website") [0].textContent;
     }
     /* die Teile für JSR1*/
-    prepareAddingNewElements(){
+    prepareAddingNewElements() {
+        this.dolly = this.root.querySelector("ul li");
+        this.dolly.parentNode.removeChild(this.dolly); /*(Element entfernen)*/
+        /* wenn ich auf das Plus Item clicke, soll ein neues Objekt erzeugt werden, aber es muss der andere Listener vom togglen der Ansichten
+        vom bubbling abgehalten werden*/
+        const addNewElementButton = document.getElementById("plusObjekt");
+        addNewElementButton.onclick= (evt) => {
+            evt.stopPropagation(); /* bricht die Wanderung des Elementes ab, Event Bubbling beachten!,
+             capturing Phase abgechlossen, dann bubbling abrechen*/
+            //um verschiede Bilder zu bekommen mit randomfunktion, im String gelöst über Dat und Modulo
+            const imgUrl = "./bilder/" + (((Date.now() % 3)+1) * 100) + "_100.jpeg";
+            const newObject = {title: Date.now(), src: imgUrl};
+            alert("hier soll ein Element zugefügt werden");
+            this.addNewElementToLIst(newObject);
+        }
+    }
+    addNewElementToLIst(obj){
+        const ulElement = this.mainElement.getElementsByTagName("ul")[0];
+
+        const newLi= this.dolly.cloneNode(true); //fügt die komplette Listenstruktur dazu, aber man sieht noch nichts
+        //man muss jetzt die Inhalte zufügen
+        newLi.querySelector("b").textContent = obj.title; //fügt Titel ein
+        newLi.getElementsByTagName("img") [0].src = obj.src;
+
+        ulElement.appendChild(newLi);
+        newLi.scrollIntoView();
+        //Variante 1-------------------------------
+        /*const newLi= "<li #1>\n" +
+            "            <div class=\"inhalt\">\n" +
+            "                <div class=\"bild\" class=\"align-left\" >\n" +
+            "                    <img  src=\"" + obj.src + "\">\n" +
+            "                </div>\n" +
+            "                <div class=\"zeilenbox\" class=\"align-left\">\n" +
+            "\n" +
+            "                    <div class=\"zeile1\">\n" +
+            "                        <div class=\"align-left website\">lorempixel.com</div>\n" +
+            "                        <div class=\"align-right datum\">10.02.2020</div>\n" +
+            "                    </div>\n" +
+            "\n" +
+            "                    <div class=\"zeile2\" >\n" +
+            "                        <div class=\"align-left titel\"> <b>M1- das ist meins</b></div>\n" +
+            "                    </div>\n" +
+            "\n" +
+            "                    <div class=\"zeile3\">\n" +
+            "                        <div class=\"play\">\n" +
+            "                            <button class=\"imgbutton play align-left\">play\n" +
+            "                                <div class=\"nummer\">0</div>\n" +
+            "                            </button>\n" +
+            "                        </div>\n" +
+            "                        <div class=\"punkte\" id=\"p1\">\n" +
+            "                            <button class=\"imgbutton align-right\">punkte\n" +
+            "                            </button>\n" +
+            "                        </div>\n" +
+            "                    </div>\n" +
+            "                </div>\n" +
+            "\n" +
+            "            </div>\n" +
+            "            </div>\n" +
+            "        </li>" Variante 1*/
+        //Variante 2 ---------------------------------------------------------------------
+        /* Variante 2  const newLi = document.createElement("li"); //Instanz eines Elementes mit dem angegebenen tag
+           const img = document.createElement("img");
+           //data binding
+           newLi.appendChild(img);
+           img.src = obj.src;
+           img.classList.add("bild align-left");
+
+           const h2 = document.createElement("h2");
+           newLi.appendChild(h2);
+           h2.textContent =obj.title;
+           h2.classList.add("align-left");
+           /* divs in Variablen packen und damit unterscheiden
+           const button = document.createElement("button");
+           newLi.appendChild(button);
+           button.setAttribute("class", "imgbutton add align-right");
+
+           ulElement.appendChild(newLi);
+           /* damit auf der Seite auf das neu eingefügte Listen Item fokussiert wird, bzw hingesprungen
+           newLi.scrollIntoView(); Variante2 */
+
+        /*ulElement.innerHTML += newLi; /* neues Element zu dem alten LI dazufügen Variante1*/
+        //Variante 3---------------------------------------------------------------------KLONE
+
 
     }
 }
