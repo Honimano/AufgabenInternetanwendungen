@@ -11,6 +11,7 @@ class Viewcontroller {
         this.prepareToggleViewmode();
         this.prepareListInteraction();
         this.prepareAddingNewElements();
+        this.loadDataFromServerAndPopulateList();
     }
 
     /*testFadeOnPicture(){
@@ -109,7 +110,7 @@ class Viewcontroller {
     /* die Teile für JSR1*/
     prepareAddingNewElements() {
         this.dolly = this.root.querySelector("ul li");
-        this.dolly.parentNode.removeChild(this.dolly); /*(Element entfernen)*/
+        this.dolly.parentNode.removeChild(this.dolly); /*(Element entfernen) - alternativ mit template element ab 0:45 10te Vorlesung*/
         /* wenn ich auf das Plus Item clicke, soll ein neues Objekt erzeugt werden, aber es muss der andere Listener vom togglen der Ansichten
         vom bubbling abgehalten werden*/
         const addNewElementButton = document.getElementById("plusObjekt");
@@ -192,6 +193,17 @@ class Viewcontroller {
 
 
     }
+    loadDataFromServerAndPopulateList() {
+        xhr("GET", "data/listitems.json", null, (xhrobj) => {
+           // alert("xhrobj: " + xhrobj.responseText);
+            const objs = JSON.parse(xhrobj.responseText);
+            //alert("objs: " + JSON.stringify(objs));
+            objs.forEach(obj => {
+                this.addNewElementToLIst(obj);
+            })
+        }); /* Funktion bewirkt, dass ein GET Request an den Server gesendet wird, lokaler Server oder Node JS Server*/
+    }
+
 }
 
 //wenn die Datei vom Browser geladen wird, wollen wir Instanz der Klasse erstellen und durch Constructor Aufruf im Window auf das load event horchen, wenn
