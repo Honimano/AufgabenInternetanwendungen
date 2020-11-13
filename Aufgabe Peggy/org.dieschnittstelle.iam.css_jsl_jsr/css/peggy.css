@@ -1,0 +1,656 @@
+/* Peggys Bearbeitung von Aufgabe 1 des Aufgabenpools bei Herrn Prof. Jörn Kreutel*/
+/* variable declarations */
+:root {
+    --myapp-color-background: limegreen;
+    --myapp-color-separator: rgb(100,100,100);
+    --myapp-color-main: rgb(250,250,250);
+    --myapp-color-header: rgb(250,250,250);
+    --myapp-color-footer: rgb(250,250,250);
+    --myapp-color-fontcolor: rgb(0,0,0);
+
+    /* Höhen Header und Footer*/
+    --myapp-height-header: 50px;
+    --myapp-height-footer: 50px;
+
+    /*Schriftgrößen*/
+    --myapp-fontsize-header: 20pt;
+
+    /*Standardabstand*/
+    --myapp-distance-default: 10px;
+
+    /* Linienhöhe Header*/
+    --myapp-lineheight-header: 50px;
+    --myapp-linehight-footer: 50px;
+
+    /*Größe der Buttonsymbole*/
+    --myapp-size-imgbutton: 40px;
+    --myapp-size-imgbutton-img: 25px;
+    /* Höhe Listenelemente*/
+    --myapp-height-li: 110px;
+    --myapp-fontsize-li: 22pt;
+    --myapp-bildboxbreite: 90px;
+    --myapp-zeilenhöhediv: 30px;
+
+        /*Größe von angezeigten Bildern in der Liste*/
+    --myapp-size-img-in-li: 70px;
+    /* Größe der angezeigten Bilder in den Kacheln*/
+    --myapp-size-img-in-li-tiles: 77px;
+
+}
+html, body {
+    background-color: var(--myapp-color-main);
+    margin: 0px;
+    font-family: "Avenir Medium", sans-serif;
+    color: var(--myapp-color-fontcolor);
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    padding: 0px;
+}
+
+/* block text selection */
+
+* {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+/* use flexbox for horizontal positioning (replaces floating used in earlier versions)
+header, footer, li {
+    display: flex;
+}*/
+
+/* header and its parts */
+
+header {
+    background-color: var(--myapp-color-header);
+    color: var(--myapp-color-fontcolor);
+    height: var(--myapp-height-header);
+    width: 100%;
+    max-width: 100%;
+    line-height: var(--myapp-lineheight-header);
+    margin:0px;
+    box-shadow: -2px  5px  5px  -2px  dimgrey; /* Schatten unter dem Header wie in der Aufgabe gewünscht*/
+    margin-bottom: 5px;
+
+}
+/* Header und Footer Buttons und deren Abstände*/
+header button{
+    margin-top:calc((var(--myapp-height-header) - var(--myapp-size-imgbutton)) / 2);
+    margin-right: var(--myapp-distance-default);
+}
+header .add{
+    margin-right: 0px;
+}
+/* ................MAIN_________________________________________________________________________*/
+main {
+
+    height: calc(100% - 3px - (var(--myapp-height-header)) + var(--myapp-height-footer));
+    /*hier sind die 3 px orange Linie vom footer mit subtrahiert von der Gesamtgröße*/
+    background-color: var(--myapp-color-main);
+    color: var(--myapp-color-main);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /*line-height: var(--myapp-lineheight-header);*/
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+/*für vertikale Zentrierung des Li Icons*/
+main li button {
+    margin-top:calc((var(--myapp-height-li) - var(--myapp-size-imgbutton)) / 2 );
+}
+
+/* verblassen und toggeln--------------------------------------------------------FADE und TOGGLE------------------------------*/
+/*Listenansicht*/
+.faded  {
+    opacity: 0.0;
+    transition: opacity 2s;
+}
+main {
+    opacity: 1.0;
+    transition: opacity 1s;
+}
+/*Test fade für ein Bild und einen Button-------------------------FADE*/
+/*#fadepic.fade {
+    opacity: 0.0;
+    /*transition: opacity 2s;
+}
+
+#fadepic {
+    opacity: 1.0;
+    transition: opacity 2s;
+    margin-left: 30px;
+    margin-bottom: -25px;
+}
+
+.test #fadebutton{
+    background-color:orangered;
+    border: 5px;
+    font-size: 15pt;
+    height: 60px;
+    width: 70px;
+    margin-bottom: 20px;
+    background-repeat: no-repeat;
+
+    background-position: center;
+}*/
+/* Ende TEST FADE ZeuGS------------------------------------------------------*/
+
+
+
+
+
+/* Regeln für h1 Überschriften*/
+
+h1 {
+    font-size: var(--myapp-fontsize-header);
+    margin: var(--myapp-distance-default);
+    font-weight: normal;
+    display: inline-block;
+    /*text-transform: uppercase; /*um nur Großbuchstaben anzuzeigen*/
+    line-height: var(--myapp-lineheight-header);
+    float: left;
+    margin-top:calc((var(--myapp-height-header) - var(--myapp-lineheight-header)));
+    margin-bottom: 0px;
+}
+/* FOOTER*/
+footer{
+    height: var(--myapp-height-footer);
+    background-color: var(--myapp-color-footer);
+    color: var(--myapp-color-fontcolor);
+    border-top: orangered 3px solid;
+}
+footer h1{
+    font-size: var(--myapp-fontsize-header);
+    margin: 0px;
+    font-weight: normal;
+    display: inline-block;
+    text-transform: uppercase;
+    line-height: var(--myapp-linehight-footer);
+}
+footer button:last-child {
+    margin-right: 0px;
+}
+footer button{
+    margin-top:calc((var(--myapp-height-footer) - var(--myapp-size-imgbutton)) / 2 );
+    margin-right: var(--myapp-distance-default);
+}
+
+/* aus first child kommen die allgemeinen Regeln für alle Buttons = imgbutton*/
+.imgbutton{
+
+    background-color: transparent;
+    border:none;
+    font-size: 0pt;
+    height: var(--myapp-size-imgbutton);
+    width: var(--myapp-size-imgbutton);
+    background-repeat: no-repeat;
+    filter: invert(60%);
+    -webkit-filter: invert(60%);
+    background-size: var(--myapp-size-imgbutton-img) var(--myapp-size-imgbutton-img);
+    background-position: center;
+}
+img {
+    height:var(--myapp-size-img-in-li);
+    width: var(--myapp-size-img-in-li);
+    margin-top:calc((var(--myapp-height-li) - var(--myapp-size-img-in-li)) / 2 );
+    margin-right: var(--myapp-distance-default);
+    /*margin-left: var(--myapp-distance-default);*/
+    object-fit: cover; /* um zu verhindern, dass die Bilder gestaucht etc werden, es wird überschüssiges abgeschnitten*/
+}
+
+/*ICONS -----------HEADER UND FOOTER*/
+.menu {
+    background-image: url("./img/glyphicons/png/glyphicons-517-menu-hamburger.png");
+}
+.add#plusObjekt{
+    background-image: url("./img/glyphicons/png/glyphicons-433-plus.png");
+}
+.logout{
+    background-image: url("./img/glyphicons/png/glyphicons-388-log-out.png");
+}
+.refresh{
+    background-image: url("./img/glyphicons/png/glyphicons-82-refresh.png");
+}
+.edit{
+    background-image: url("./img/glyphicons/png/glyphicons-31-pencil.png");
+}
+.thumbnails{
+    background-image: url("./img/glyphicons/png/glyphicons-157-show-thumbnails.png");
+}
+
+/* Ausrichtungen*/
+.align-left{
+    float:left;
+}
+.align-right{
+    float:right;
+}
+.align-bottom{
+    float: bottom;
+}
+
+/* Regeln für einen Paragrafen im Hauptbereich*/
+/*main p {
+    padding:var(--myapp-distance-default);
+}*/
+
+
+/* ---------LISTENANSICHT per Divs ERSTES ELEMENT li = firstli MIT PUFFER  ---------*/
+ul {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-top: 0;
+    padding:0;
+
+}
+.puffer{
+    position: sticky;
+    height: 20px;
+    width: 100%;
+    background-color: lightgray;
+}
+.inhalt{
+    position: relative;
+}
+
+.bild{
+    background-color: var(--myapp-color-main);
+    height:var(--myapp-height-li);
+    width: var(--myapp-bildboxbreite);
+    float: left;
+}
+.bild img{
+    margin-top: var(--myapp-distance-default);
+    margin-left: var(--myapp-distance-default);
+}
+
+.zeilenbox{
+    position: relative;
+    width: 100%;
+    color: var(--myapp-color-fontcolor);
+    height:var(--myapp-height-li);
+    border-bottom: 1px solid var(--myapp-color-separator);
+}
+.zeile1{
+    height: var(--myapp-zeilenhöhediv);
+    color: grey;
+    font-size: 11pt;
+    margin-right: calc(5px + (var(--myapp-distance-default)));
+    }
+.website{
+    margin-top: var(--myapp-distance-default);
+    margin-left: var(--myapp-distance-default);
+}
+.datum{
+    margin-top: var(--myapp-distance-default);
+}
+.zeile2 {
+    height: 30px;
+    color: var(--myapp-color-fontcolor);
+}
+.titel{
+    margin-top: 5px;
+    margin-left: var(--myapp-distance-default);
+}
+
+.zeile3{
+    /*background-color: beige;*/
+    height: 30px;
+
+}
+.nummer{
+    display:inline;
+    color: grey;
+    font-size: 11pt;
+    margin-left: 14px;
+}
+
+.play {
+    background-image: url("./img/glyphicons/png/glyphicons-174-play.png");
+    height: 18px;
+    width:18px;
+    background-size: auto;
+    object-fit: cover;
+    display:inline;
+    margin-top: 3px;
+    margin-left: var(--myapp-distance-default);
+
+}
+.punkte{
+    background-image: url("./img/glyphicons/png/glyphicons-518-option-vertical.png");
+    float: right;
+    display:inline;
+    height: 20px;
+    width:20px;
+    margin-right: var(--myapp-distance-default);
+    background-size: auto;
+    object-fit: cover;
+    margin-top: 3px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border:none;
+    font-size: 0pt;
+    filter: invert(60%);
+    -webkit-filter: invert(60%);
+    background-position: center;
+}
+
+
+
+/* KACHELANSICHT-und ich wünschte, man könnte die Codeblöcke farbig hinterlegen, für Farbmenschen wie mich, die sonst blind sind o.O--*/
+
+/* tiles = Kacheln, Liste unsichtbar machen ACHTUNG; JAVASCRIPT?*/
+
+.tiles li > * {
+    display: none;
+
+}
+.tiles html, body {
+    background-color: var(--myapp-color-main);
+    margin: 0px;
+    font-family: "Avenir Medium", sans-serif;
+    color: var(--myapp-color-fontcolor);
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    padding: 0px;
+}
+.tiles main{
+
+    height: calc(100% - 3px - (var(--myapp-height-header)) + var(--myapp-height-footer));
+    /*hier sind die 3 px orange Linie vom footer mit subtrahiert von der Gesamtgröße*/
+    background-color: var(--myapp-color-main);
+    color: var(--myapp-color-main);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    /*line-height: var(--myapp-lineheight-header);*/
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+.tiles li div {
+    display: inline-block;
+}
+
+.tiles img{
+    height:  var(--myapp-size-img-in-li-tiles);
+    width: var(--myapp-size-img-in-li-tiles);
+    margin: 0;
+    object-fit: cover;
+    z-index: 1;
+}
+.tiles li div.bild{
+    margin:0;
+    width: var(--myapp-size-img-in-li-tiles);
+    height: var(--myapp-size-img-in-li-tiles);
+    z-index: 1;
+}
+.tiles li {
+    border-bottom: none;
+    float: left;
+    height: var(--myapp-size-img-in-li-tiles);
+    width: var(--myapp-size-img-in-li-tiles);
+    margin-left: 10px;
+    margin-top: 10px;
+    position: relative;
+}
+.tiles li div.inhalt{
+    height: var(--myapp-size-img-in-li-tiles);
+    width: var(--myapp-size-img-in-li-tiles);
+    z-index: 1;
+}
+.tiles li div.zeilenbox{
+
+    position:absolute;
+    margin-left: -77px;
+    border-bottom: none;
+    height: var(--myapp-size-img-in-li-tiles);
+}
+
+.tiles li div.zeile1 {
+    display: none;
+}
+
+.tiles li div.zeile2{
+    display: none;
+}
+
+.tiles li div.play {
+    display:none;
+}
+
+.tiles li div.zeile3{
+    float:right;
+    z-index: 2;
+    width:30px;
+    height: 30px;
+    padding: 0;
+    /*margin-top: 40px;*/
+}
+.tiles li div.punkte{
+    margin-top: 45px;
+    float:right;
+    display: inline-block;
+    height: 20px;
+    width:20px;
+    background-size: auto;
+    margin-right:0;
+    filter:invert(90%);
+    -webkit-filter: invert(90%);
+}
+.tiles .thumbnails { /* hier MIT Leerteichen um zu sagen, die Klasse ist eins weiter unten in der DOM Struktur*/
+    background-image: url("./img/glyphicons/png/glyphicons-115-list.png");
+
+}
+/*----------------------------------------------------------------------------------------*/
+/* Kachel header Einstellungen*/
+.tiles header {
+    background-color: var(--myapp-color-header);
+    color: var(--myapp-color-fontcolor);
+    height: var(--myapp-height-header);
+    width: 100%;
+    max-width: 100%;
+    line-height: var(--myapp-lineheight-header);
+    margin:0px;
+    box-shadow: -2px  5px  5px  -2px  dimgrey; /* Schatten unter dem Header wie in der Aufgabe gewünscht*/
+    margin-bottom: 5px;
+
+}
+/* aus first child kommen die allgemeinen Regeln für alle Buttons = imgbutton*/
+.tiles header.imgbutton{
+    background-color: transparent;
+    border:none;
+    font-size: 0pt;
+    height: var(--myapp-size-imgbutton);
+    width: var(--myapp-size-imgbutton);
+    background-repeat: no-repeat;
+    filter: invert(60%);
+    -webkit-filter: invert(60%);
+    background-size: var(--myapp-size-imgbutton-img) var(--myapp-size-imgbutton-img);
+    background-position: center;
+    margin-top: 5px;
+
+
+}
+.tiles header button{
+    margin-top:calc((var(--myapp-height-header) - var(--myapp-size-imgbutton)) / 2);
+    margin-right: var(--myapp-distance-default);
+}
+.tiles header.add{
+    margin-right: 0px;
+    padding: 0px;
+
+}
+.tiles header h1 {
+    font-size: var(--myapp-fontsize-header);
+    margin: var(--myapp-distance-default);
+    font-weight: normal;
+    display: inline-block;
+    /*text-transform: uppercase; /*um nur Großbuchstaben anzuzeigen*/
+    line-height: var(--myapp-lineheight-header);
+    float: left;
+    margin-top:calc((var(--myapp-height-header) - var(--myapp-lineheight-header)));
+    margin-bottom: 0px;
+}
+
+.tiles footer{
+    height: var(--myapp-height-footer);
+    background-color: var(--myapp-color-footer);
+    color: var(--myapp-color-fontcolor);
+    border-top: orangered 3px solid;
+}
+.tiles footer h1{
+    font-size: var(--myapp-fontsize-header);
+    margin: 0px;
+    font-weight: normal;
+    display: inline-block;
+    text-transform: uppercase;
+    line-height: var(--myapp-linehight-footer);
+}
+.tiles footer button:last-child {
+    margin-right: 0px;
+}
+.tiles footer button{
+    margin-top:calc((var(--myapp-height-footer) - var(--myapp-size-imgbutton)) / 2 );
+    margin-right: var(--myapp-distance-default);
+}
+
+
+
+/* Ende Kachelansichtcode------*/
+
+
+/* -----------------ausgemusterte STARTGERÜSTBESTANDTEILE---------------------------------------------*/
+
+/*.imgbutton {
+    background-color: transparent;
+    height: 30px;
+    width: 30px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    padding: 0px;
+    border: none;
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    display: inline-block;
+    background-origin: content-box;
+    background-position: center center;
+    filter: invert(40%);
+    -webkit-filter: invert(40%);
+}*/
+
+/*.listeners-active .toggle-listeners {
+    background-image: url("./img/glyphicons/png/glyphicons-517-menu-hamburger.png");
+    background-size: 30px 30px;
+    /*float: left;
+    justify-content: flex-start;
+}
+.listeners-active .toggle-listeners-out {
+    background-image: url("./img/glyphicons/png/glyphicons-388-log-out.png");
+    background-size: 30px 30px;
+    /*float: left;
+    justify-content: flex-start;
+}
+.toggle-listeners {
+    background-image: url("./img/glyphicons/png/glyphicons-517-menu-hamburger.png");
+    background-size: 23px 30px;
+    /*float: left;
+    justify-content: flex-start;
+}
+.toggle-listeners-out {
+    background-image: url("./img/glyphicons/png/glyphicons-388-log-out.png");
+    background-size: 23px 30px;
+    /*float: left;
+    justify-content: flex-start;
+}*/
+/*.refresh{
+    background-image: url("./img/glyphicons/png/glyphicons-82-refresh.png");
+    justify-content: flex-end;
+}
+.kacheln {
+    background-image: url("./img/glyphicons/png/glyphicons-157-show-thumbnails.png");
+    justify-content: flex-end;
+
+}
+
+.plus {
+    background-image: url("./img/glyphicons/png/glyphicons-433-plus.png");
+
+    justify-content: flex-end;
+
+}*/
+
+/*.edit-item {
+    float: right;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-image: url("./img/glyphicons/png/glyphicons-31-pencil.png");
+    /*float: right;*/
+    /*justify-content: flex-end;
+    margin-left: auto;
+}*/
+
+/*
+
+.maincontent main {
+    width: 100%;
+    max-width: 100%;
+    background-color: var(--myapp-color-main);
+    height: calc(100% - (50px));
+    height: -webkit-calc(100% - 50px);
+    max-height: calc(100% - 50px);
+    max-height: -webkit-calc(100% - 50px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+}*/
+
+/* list and list items */
+
+
+
+/* disabled elements
+[disabled] {
+    opacity: 0.5;
+}
+
+/* selected elements
+li:active, .imgbutton:active  {
+    opacity: 0.1;
+}*/
+
+
+/* toast */
+
+/*dialog.toast {
+    position: fixed;
+    width: 60%;
+    bottom: 15%;
+    left: 20%;
+    margin: 0px;
+    padding: 5px;
+    text-align: center;
+    opacity: 0.0;
+    color: white;
+    border: none;
+    transition: opacity 0.5s, background-color 0.5s;
+    transition-delay: 0.5s;
+}
+
+.toast.shown {
+    opacity: 1.0;
+    background-color: gray;
+    /*transition-delay: 0s;
+    transition: opacity 1s, background-color 1s;
+}*/
+
+
