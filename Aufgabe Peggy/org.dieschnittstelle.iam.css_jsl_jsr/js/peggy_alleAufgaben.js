@@ -23,7 +23,7 @@ class Viewcontroller {
         this.fadebutton.onclick = () => {
             this.fadeElement.classList.toggle("fade");
         }
-    }*/
+    } hier habe ich ein Testbild zwischendurch implementiert um zu sehen wie fade funktioniert*/
 
     prepareToggleViewmode() {
 
@@ -66,8 +66,13 @@ class Viewcontroller {
             //wenn ich die ID von der Listenzeile habe, kann ich die passende punkte klasse auslesen
 
             if (punkteID) {
-                alert("Options: Hier die Anzeige von Titel und SeitenQuelle, wenn man auf die Punkte clickt innerhalb des Listenelementes: "
-                    + "Titel: "+ this.getTitleFromLi(selectedLi)+ ", " + "Quelle:" + ", " + this.getWebsiteFromLi(selectedLi));
+                let check = confirm("Du hast ein Listenelement ausgewählt: "
+                    + "Titel: "+ this.getTitleFromLi(selectedLi)+ ", " + "Quelle:" + ", " + this.getWebsiteFromLi(selectedLi) +":" + " "+
+                "Möchtest Du dieses Element löschen? Dann click auf OK!");
+                if (check === true) {
+                   let löschen = this.findLiForElement(evt.target);
+                   löschen.remove();
+                }
             }
             else if (selectedLi) {
                 alert("Rest des Listenelementes zeigt nur die Titel: " + this.getTitleFromLi(selectedLi));
@@ -156,6 +161,7 @@ class Viewcontroller {
         newLi.scrollIntoView();
 
     }
+    /* Funktion um die Liste zu leeren, ohne die Seite zu laden*/
     removeAllElementsFromList(obj){
         const removeElement = document.getElementsByClassName("refresh")[0];
         removeElement.onclick = () =>{
@@ -163,10 +169,9 @@ class Viewcontroller {
             this.loadDataFromServerAndPopulateList();
         }
 
-
-
     }
 
+    /* Laden der Daten vom Server*/
 
         loadDataFromServerAndPopulateList() {
         xhr("GET", "data/listitems.json", null, (xhrobj) => {
