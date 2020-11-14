@@ -129,6 +129,7 @@ class Viewcontroller {
         //man muss jetzt die Inhalte zufügen
         newLi.querySelector("b").textContent = obj.title; //fügt Titel ein
         newLi.getElementsByTagName("img") [0].src = obj.src;
+        newLi.getElementsByClassName("")
 
         ulElement.appendChild(newLi);
         newLi.scrollIntoView();
